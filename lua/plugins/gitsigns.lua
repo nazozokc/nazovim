@@ -19,4 +19,8 @@ return {
 		word_diff = true, -- 🔥 単語単位差分
 		update_debounce = 100,
 	},
+	keys = {
+		{ "<leader>gp", ":Gitsigns preview_hunk<CR>", desc = "Gitsigns preview hunk" },
+		{ "<leader>gt", ":Gitsigns toggle_current_line_blame<CR>", desc = "Gitsigns blame toggle" },
+	},
 }
