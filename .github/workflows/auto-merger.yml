@@ -2,6 +2,12 @@ name: Bot Auto Merge
 
 on:
   pull_request:
+  workflow_dispatch:
+    inputs:
+      pr_url:
+        description: "PR URL to merge"
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -12,6 +18,7 @@ jobs:
     name: Auto merge bot PRs
     runs-on: ubuntu-latest
     if: |
+      github.event_name == 'workflow_dispatch' ||
       github.actor == 'dependabot[bot]' ||
       github.actor == 'renovate[bot]'
 
@@ -26,10 +33,11 @@ jobs:
       # patch / minor の GitHub Actions 依存は自動マージ
       - name: Enable auto-merge for Dependabot PRs
         if: |
+          github.event_name == 'workflow_dispatch' ||
           github.actor == 'renovate[bot]' ||
           steps.metadata.outputs.update-type == 'version-update:semver-patch' ||
           steps.metadata.outputs.update-type == 'version-update:semver-minor'
         run: gh pr merge --auto --squash "$PR_URL"
         env:
-          PR_URL: ${{ github.event.pull_request.html_url }}
+          PR_URL: ${{ github.event_name == 'workflow_dispatch' && inputs.pr_url || github.event.pull_request.html_url }}
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
