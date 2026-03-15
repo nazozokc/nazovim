@@ -50,10 +50,10 @@ local map = vim.keymap.set
 -- ---------------------------------------------------------
 -- UI / Toggle
 -- ---------------------------------------------------------
-map("n", "<leader>t", ":ToggleTerm<CR>", {})
-map("n", "<leader>c", ":Oil $HOME/dotfiles<CR>", {})
+map("n", "<leader>t", ":ToggleTerm<CR>", { desc = "Toggle terminal" })
+map("n", "<leader>c", ":Oil $HOME/dotfiles<CR>", { desc = "Open dotfiles in Oil" })
 map("n", "<leader>so", ":SymbolsOutline<CR>")
-map("n", "<F2>", ":Twilight<CR>", {})
+map("n", "<F2>", ":Twilight<CR>", { desc = "Toggle Twilight" })
 map("n", "<leader>e", ":TroubleToggle<CR>")
 
 -- ---------------------------------------------------------
