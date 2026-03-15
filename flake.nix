@@ -44,13 +44,12 @@
               CONFIG_DIR="''${XDG_CONFIG_HOME:-$HOME/.config}/$APPNAME"
               DATA_DIR="''${XDG_DATA_HOME:-$HOME/.local/share}/$APPNAME"
               export NVIM_APPNAME="$APPNAME"
-              # 初回だけ config を展開する
-              if [ ! -d "$CONFIG_DIR" ]; then
-                echo "[nazozokc.nvim] Initializing config at $CONFIG_DIR ..."
-                mkdir -p "$CONFIG_DIR"
-                cp -r ${nvimConfig}/. "$CONFIG_DIR/"
-                chmod -R u+w "$CONFIG_DIR"
-              fi
+              # 毎回 config を削除して再作成
+              echo "[nazozokc.nvim] Refreshing config at $CONFIG_DIR ..."
+              rm -rf "$CONFIG_DIR"
+              mkdir -p "$CONFIG_DIR"
+              cp -r ${nvimConfig}/. "$CONFIG_DIR/"
+              chmod -R u+w "$CONFIG_DIR"
               # lazy.nvim のデータディレクトリを事前に作成
               mkdir -p "$DATA_DIR"
               exec nvim "$@"
