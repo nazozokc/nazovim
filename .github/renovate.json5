@@ -1,0 +1,21 @@
+{
+  $schema: "https://docs.renovatebot.com/renovate-schema.json",
+  extends: ["config:recommended"],
+  automerge: true,
+  automergeType: "pr",
+  schedule: ["every 3 hours"],
+  packageRules: [
+    {
+      matchUpdateTypes: ["patch", "minor"],
+      automerge: true,
+    },
+    {
+      matchUpdateTypes: ["major"],
+      automerge: true,
+    },
+  ],
+  nix: {
+    enabled: true,
+  },
+}
+
