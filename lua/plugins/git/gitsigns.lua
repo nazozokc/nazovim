@@ -13,8 +13,8 @@ return {
 		watch_gitdir = {
 			follow_files = true,
 		},
-		current_line_blame = false,
-		word_diff = true,
+		current_line_blame = true,
+		word_diff = false,
 		update_debounce = 100,
 	},
 	keys = {
