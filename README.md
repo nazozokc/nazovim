@@ -102,6 +102,16 @@ nvim
 
 初回起動時に lazy.nvim がすべてのプラグインを自動インストールします。
 
+### 方法３でクローン後に削除しても良いファイル
+- flake.nix
+- document/
+- .github/
+- LICENSE
+- SECURITY.md
+- CONTRIBUTING.md
+
+※`不安な場合は削除しなくても動作には一切影響がありません。`
+
 ---
 
 ## 🗂️ Directory Structure
