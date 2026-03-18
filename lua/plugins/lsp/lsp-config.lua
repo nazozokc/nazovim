@@ -1,25 +1,29 @@
 return {
-	{
-		"williamboman/mason.nvim",
-		event = "VeryLazy",
-		opts = {},
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-		event = "VeryLazy",
-		dependencies = { "williamboman/mason.nvim" },
-		opts = {
-			-- mason が管理するもの（自動インストール対象）
-			-- nixd は mason 非対応のため手動インストールが必要（nix 環境では devShell が提供）
-			ensure_installed = {
-				"html",
-				"lua_ls",
-				"solargraph",
-				"efm",
-				"clangd",
-			},
-		},
-	},
+{
+ 	"williamboman/mason.nvim",
+ 	-- VeryLazy → cmd に変更。Mason コマンドを叩くまでロードしない
+ 	cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate", "MasonLog" },
+ 	opts = {},
+ },
+ {
+ 	"williamboman/mason-lspconfig.nvim",
+ 	-- mason と同様に遅延させる
+ 	-- ただし nvim-lspconfig の BufReadPre より前に解決される必要があるため
+ 	-- lazy = true のみ指定し、nvim-lspconfig の dependencies に任せる
+ 	lazy = true,
+ 	dependencies = { "williamboman/mason.nvim" },
+ 	opts = {
+ 		-- mason が管理するもの（自動インストール対象）
+ 		-- nixd は mason 非対応のため手動インストールが必要（nix 環境では devShell が提供）
+ 		ensure_installed = {
+ 			"html",
+ 			"lua_ls",
+ 			"solargraph",
+ 			"efm",
+ 			"clangd",
+ 		},
+ 	},
+ },
 	{
 		"neovim/nvim-lspconfig",
 		event = "BufReadPre",
