@@ -83,7 +83,6 @@ return {
 						change = "▎",
 						delete = "",
 					},
-					priority = 199,
 				},
 
 				delay = {
