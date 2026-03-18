@@ -1,12 +1,16 @@
 return {
 	{
 		"williamboman/mason.nvim",
-		event = "VeryLazy",
+		-- VeryLazy → cmd に変更。Mason コマンドを叩くまでロードしない
+		cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUpdate", "MasonLog" },
 		opts = {},
 	},
 	{
 		"williamboman/mason-lspconfig.nvim",
-		event = "VeryLazy",
+		-- mason と同様に遅延させる
+		-- ただし nvim-lspconfig の BufReadPre より前に解決される必要があるため
+		-- lazy = true のみ指定し、nvim-lspconfig の dependencies に任せる
+		lazy = true,
 		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			-- mason が管理するもの（自動インストール対象）

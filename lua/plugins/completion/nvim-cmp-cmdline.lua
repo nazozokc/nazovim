@@ -1,12 +1,13 @@
 return {
 	"hrsh7th/cmp-cmdline",
-	event = "CmdlineEnter",
-	-- dependencies に nvim-cmp を書かない
+	-- CmdlineEnter は削除。nvim-cmp が InsertEnter でロードされた後に
+	-- after/plugin として自動ロードされるよう dependencies に任せる
+	dependencies = { "hrsh7th/nvim-cmp" },
 	config = function()
 		local ok, cmp = pcall(require, "cmp")
 		if not ok then
 			return
-		end -- cmp未ロードなら何もしない
+		end
 
 		cmp.setup.cmdline("/", {
 			mapping = cmp.mapping.preset.cmdline(),

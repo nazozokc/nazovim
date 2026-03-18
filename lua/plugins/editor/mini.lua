@@ -13,10 +13,21 @@ return {
 	{
 		"echasnovski/mini.surround",
 		version = false,
-		event = "VeryLazy",
+		-- VeryLazy → keys に変更。実際に使うキーを押すまでロードしない
+		keys = {
+			{ "sa", desc = "Add surrounding" },
+			{ "sd", desc = "Delete surrounding" },
+			{ "sr", desc = "Replace surrounding" },
+			{ "sn", desc = "Update n_lines" },
+		},
 		config = function()
 			require("mini.surround").setup({
-				mappings = { add = "sa", delete = "sd", replace = "sr", update_n_lines = "sn" },
+				mappings = {
+					add = "sa",
+					delete = "sd",
+					replace = "sr",
+					update_n_lines = "sn",
+				},
 			})
 		end,
 	},
