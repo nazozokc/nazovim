@@ -70,7 +70,7 @@
 
 ## 📦 Installation
 
-### 方法1: `nix run`（推奨 / Nix環境）
+### 方法1: `nix run`（まずは使ってみる人）
 
 ```bash
 nix run github:nazozokc/nazozokc.nvim.config
@@ -78,16 +78,7 @@ nix run github:nazozokc/nazozokc.nvim.config
 
 設定は `~/.config/nvim-nazozokc` に隔離して展開されるため、既存のNeovim設定を汚しません。
 
-### 方法2: `nix develop`（devShell）
-
-LSP・フォーマッターが揃った開発シェルに入れます。
-
-```bash
-nix develop github:nazozokc/nazovim
-nvim  # NVIM_APPNAME=nvim-nazozokc で自動起動
-```
-
-### 方法3: Clone（Nix 不要）
+### 方法2: Clone（Nix 不要）
 
 > **注意**: 既存の Neovim 設定を上書きします。バックアップを推奨します。
 >
@@ -102,7 +93,7 @@ nvim
 
 初回起動時に lazy.nvim がすべてのプラグインを自動インストールします。
 
-### 方法３でクローン後に削除しても良いファイル
+### 方法2でクローン後に削除しても良いファイル
 - flake.nix
 - document/
 - .github/
@@ -408,6 +399,31 @@ nvim
 :Lazy reload   " 設定を再読み込み
 :source %      " 現在のバッファを sourced
 ```
+
+---
+
+## 🔧 Customization
+
+`lua/plugins/` 以下にLuaファイルを追加するだけで自動でロードされます。
+```lua
+-- lua/plugins/my-config.lua
+
+-- プラグイン追加
+return {
+  "folke/zen-mode.nvim",
+  opts = {}
+}
+```
+
+既存プラグインの設定を上書きする場合も同じファイルに書けます。
+```lua
+return {
+  "rebelot/kanagawa.nvim",
+  opts = { transparent = false }
+}
+```
+
+> **Note**: Clone（方法3）でインストールした場合のみ有効です。
 
 ---
 
