@@ -24,6 +24,9 @@ return {
 				"black",
 				"prettier",
 			},
+			automatic_enable = {
+				exclude = { "ts_ls" },
+			},
 		},
 	},
 	{
