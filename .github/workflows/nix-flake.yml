@@ -30,7 +30,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v21
 
       - name: Cache Nix store
-        uses: DeterminateSystems/magic-nix-cache-action@v8
+        uses: DeterminateSystems/magic-nix-cache-action@v13
 
       - name: Check flake inputs
         run: |
