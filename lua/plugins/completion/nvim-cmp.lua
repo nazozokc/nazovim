@@ -2,13 +2,13 @@ return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
 	dependencies = {
-		-- 補完ソース
+		-- Completion sources
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-calc",
 
-		-- スニペット
+		-- Snippets
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
@@ -21,7 +21,7 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 
 		------------------------------------------------------------------
-		-- ハイライト
+		-- Highlights
 		------------------------------------------------------------------
 		vim.api.nvim_set_hl(0, "CmpGhostSnippet", {
 			fg = "#727169",
@@ -34,7 +34,7 @@ return {
 		})
 
 		------------------------------------------------------------------
-		-- cmp 本体
+		-- cmp core
 		------------------------------------------------------------------
 		cmp.setup({
 			preselect = cmp.PreselectMode.Item,
