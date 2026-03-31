@@ -1,4 +1,4 @@
-return {
+	return {
 	"zbirenbaum/copilot.lua",
 	cmd = { "Copilot", "CopilotChat" },
 	config = function()

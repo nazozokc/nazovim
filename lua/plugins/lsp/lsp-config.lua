@@ -18,9 +18,7 @@ return {
 				"black",
 				"prettier",
 			},
-			automatic_enable = {
-				exclude = { "ts_ls" },
-			},
+			automatic_enable = true,
 		},
 	},
 	{
@@ -72,7 +70,6 @@ return {
 				root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
 			})
 
-			-- nixd は mason 管理外なので手動で有効化
 			vim.lsp.enable({ "nixd" })
 		end,
 	},
