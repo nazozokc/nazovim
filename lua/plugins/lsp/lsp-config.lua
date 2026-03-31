@@ -72,14 +72,8 @@ return {
 				root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
 			})
 
-			vim.lsp.enable({
-				"html",
-				"lua_ls",
-				"solargraph",
-				"efm",
-				"clangd",
-				"nixd",
-			})
+			-- nixd は mason 管理外なので手動で有効化
+			vim.lsp.enable({ "nixd" })
 		end,
 	},
 }
