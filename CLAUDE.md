@@ -1,6 +1,6 @@
 # Neovim Configuration
 
-このディレクトリは nazozokc/nazozokc.nvim.config リポジトリの Neovim 設定です。  
+このディレクトリは NazoVim-org/NazoVim リポジトリの Neovim 設定です。  
 lazy.nvim をプラグインマネージャーとして使用しています。
 
 ---
@@ -50,7 +50,7 @@ nvim/
 | lspsaga.nvim | LSP UI拡張 |
 | actions-preview.nvim | コードアクションプレビュー |
 | conform.nvim | フォーマッター（stylua / prettier等） |
-| none-ls.nvim | rubocop等の追加診断 |
+| nvim-lint | rubocop等の追加診断 |
 | fidget.nvim | LSPプログレス表示 |
 | tiny-inline-diagnostic.nvim | インライン診断 |
 | lazydev.nvim | Lua/Neovim API の補完・型チェック強化 |
@@ -294,7 +294,7 @@ nvim/
 このリポジトリをクローンし、`~/.config/nvim` にシンボリックリンクを貼って使用します。
 
 ```bash
-git clone https://github.com/nazozokc/nazozokc.nvim.config.git ~/.config/nvim
+git clone https://github.com/NazoVim-org/NazoVim.git ~/.config/nvim
 ```
 
 または、直接このディレクトリを `~/.config/nvim` に配置してください。
