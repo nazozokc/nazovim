@@ -1,7 +1,6 @@
--- lua/plugins/hlslens.lua
 return {
 	"kevinhwang91/nvim-hlslens",
-	event = { "BufReadPost", "BufNewFile" }, -- 必要に応じて
+	event = { "BufReadPost", "BufNewFile" },
 	config = function()
 		local hlslens = require("hlslens")
 
@@ -12,28 +11,12 @@ return {
 			enable_incsearch = true,
 		})
 
-		-- Auto activate hlslens on search
-		local opts = { noremap = true, silent = true }
+		local map = vim.keymap.set
 
-		-- Show count after n/N movement
-		vim.api.nvim_set_keymap(
-			"n",
-			"n",
-			[[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]],
-			opts
-		)
-		vim.api.nvim_set_keymap(
-			"n",
-			"N",
-			[[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]],
-			opts
-		)
-
-		-- Same for * and #
-		vim.api.nvim_set_keymap("n", "*", [[*<Cmd>lua require('hlslens').start()<CR>]], opts)
-		vim.api.nvim_set_keymap("n", "#", [[#<Cmd>lua require('hlslens').start()<CR>]], opts)
-
-		-- Toggle details with <Leader>l
-		vim.api.nvim_set_keymap("n", "<Leader>l", "<Cmd>lua require('hlslens').toggle_virtual_text()<CR>", opts)
+		map("n", "n", "<Cmd>execute('normal! ' .. v:count1 .. 'n')<CR><Cmd>lua require('hlslens').start()<CR>", { silent = true, desc = "Next search" })
+		map("n", "N", "<Cmd>execute('normal! ' .. v:count1 .. 'N')<CR><Cmd>lua require('hlslens').start()<CR>", { silent = true, desc = "Prev search" })
+		map("n", "*", "*<Cmd>lua require('hlslens').start()<CR>", { silent = true, desc = "Search word forward" })
+		map("n", "#", "#<Cmd>lua require('hlslens').start()<CR>", { silent = true, desc = "Search word backward" })
+		map("n", "<Leader>l", "<Cmd>lua require('hlslens').toggle_virtual_text()<CR>", { silent = true, desc = "Toggle hlslens virtual text" })
 	end,
 }

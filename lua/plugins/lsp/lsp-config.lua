@@ -64,8 +64,6 @@ return {
 
 			vim.lsp.config("jdtls", {
 				capabilities = capabilities,
-				cmd = { "jdtls" },
-				root_dir = vim.fs.root(0, { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }),
 			})
 
 			vim.lsp.enable({ "nixd" })

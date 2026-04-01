@@ -3,6 +3,21 @@ return {
 	dependencies = { "MunifTanjim/nui.nvim" },
 	ft = { "json" },
 	config = function()
+		local function detect_package_manager()
+			local root = vim.fs.root(0, { "pnpm-lock.yaml", "yarn.lock", "package-lock.json", "bun.lockb", "package.json" })
+			if not root then
+				return "npm"
+			end
+			if vim.fn.filereadable(root .. "/pnpm-lock.yaml") == 1 then
+				return "pnpm"
+			elseif vim.fn.filereadable(root .. "/yarn.lock") == 1 then
+				return "yarn"
+			elseif vim.fn.filereadable(root .. "/bun.lockb") == 1 then
+				return "bun"
+			end
+			return "npm"
+		end
+
 		require("package-info").setup({
 			colors = {
 				up_to_date = "#3C4048",
@@ -18,21 +33,9 @@ return {
 			autostart = true,
 			hide_up_to_date = true,
 			hide_unstable_versions = false,
-			package_manager = (function()
-				local root = vim.fn.getcwd()
-				if vim.fn.filereadable(root .. "/pnpm-lock.yaml") == 1 then
-					return "pnpm"
-				elseif vim.fn.filereadable(root .. "/yarn.lock") == 1 then
-					return "yarn"
-				elseif vim.fn.filereadable(root .. "/bun.lockb") == 1 then
-					return "bun"
-				else
-					return "npm"
-				end
-			end)(),
+			package_manager = detect_package_manager(),
 		})
 
-		-- Keymaps
 		local map = vim.keymap.set
 		map("n", "<leader>ns", require("package-info").show, { desc = "Show package versions", silent = true })
 		map("n", "<leader>nc", require("package-info").hide, { desc = "Hide package versions", silent = true })
@@ -40,11 +43,6 @@ return {
 		map("n", "<leader>nu", require("package-info").update, { desc = "Update package", silent = true })
 		map("n", "<leader>nd", require("package-info").delete, { desc = "Delete package", silent = true })
 		map("n", "<leader>ni", require("package-info").install, { desc = "Install new package", silent = true })
-		map(
-			"n",
-			"<leader>np",
-			require("package-info").change_version,
-			{ desc = "Change package version", silent = true }
-		)
+		map("n", "<leader>np", require("package-info").change_version, { desc = "Change package version", silent = true })
 	end,
 }
