@@ -51,6 +51,3 @@ map("n", "<leader>;", function()
 	require("dropbar.api").pick()
 end, { desc = "Dropbar pick symbol" })
 
-map("n", "gp", function()
-	require("dropbar.api").open()
-end, { desc = "Dropbar open" })
