@@ -42,7 +42,3 @@ end, { desc = "Zen Mode" })
 map("n", "<leader>;", function()
 	require("dropbar.api").pick()
 end, { desc = "Dropbar pick symbol" })
-<<<<<<< HEAD
-
-=======
->>>>>>> ee3ee1369d7a611cef2bebbbe84d66e3afed9954
