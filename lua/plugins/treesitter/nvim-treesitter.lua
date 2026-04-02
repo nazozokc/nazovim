@@ -4,7 +4,7 @@ return {
 	build = ":TSUpdate",
 	event = { "BufReadPost", "BufNewFile" },
 	config = function()
-		require("nvim-treesitter.configs").setup({
+		require("nvim-treesitter").setup({
 			parser_install_dir = vim.fn.stdpath("data") .. "/site",
 			ensure_installed = {
 				"javascript",
