@@ -12,6 +12,12 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
+
+		-- Denippet (VSCode snippet integration)
+		"uga-rosa/cmp-denippet",
+
+		-- TailwindCSS color display
+		"roobert/tailwindcss-colorizer-cmp.nvim",
 	},
 
 	config = function()
