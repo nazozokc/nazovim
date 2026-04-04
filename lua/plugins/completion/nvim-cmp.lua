@@ -1,24 +1,25 @@
 return {
 	"hrsh7th/nvim-cmp",
 	event = "InsertEnter",
-		dependencies = {
-			-- Completion sources
-			"hrsh7th/cmp-nvim-lsp",
-			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-calc",
 
-			-- Snippets
-			"L3MON4D3/LuaSnip",
-			"saadparwaiz1/cmp_luasnip",
-			"rafamadriz/friendly-snippets",
+	dependencies = {
+		-- Completion sources
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-calc",
 
-			-- Denippet (VSCode snippet integration)
-			"uga-rosa/cmp-denippet",
+		-- Snippets
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
+		"rafamadriz/friendly-snippets",
 
-			-- TailwindCSS color display
-			"roobert/tailwindcss-colorizer-cmp.nvim",
-		},
+		-- Denippet (VSCode snippet integration)
+		"uga-rosa/cmp-denippet",
+
+		-- TailwindCSS color display
+		"roobert/tailwindcss-colorizer-cmp.nvim",
+	},
 
 	config = function()
 		local cmp = require("cmp")
