@@ -109,7 +109,7 @@ return {
 				{ name = "buffer", priority = 250 }
 				},
 
-			experimental = {
+		experimental = {
 				ghost_text = {
 					hl_group = "CmpGhostSnippet",
 				},
